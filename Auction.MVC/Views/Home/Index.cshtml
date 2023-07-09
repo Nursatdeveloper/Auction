@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Auction.MVC.MainPageViewDto
+
+<div class="text-center">
+    <div class="mt-2 card card-body">
+        <h5>Trade List</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Action</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Auction Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Participants</th>
+                    <th scope="col">Participate</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var trade in Model.Trades) {
+                    <tr>
+                        <td><a asp-action="TradeView" asp-route-tradeId="@trade.TradeId">Open</a></td>
+                        <td>@trade.TradeId</td>
+                        <td>@trade.Name</td>
+                        <td>@trade.Price</td>
+                        <td>@trade.Type</td>
+                        <td>@trade.AuctionDate</td>
+                        <td>@trade.EndDate</td>
+                        <td>@trade.ParticipantsCount</td>
+                        <td>@trade.Participate </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

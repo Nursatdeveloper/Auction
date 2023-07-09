@@ -1,0 +1,29 @@
+﻿@model Auction.MVC.CreateTradeDto
+
+<div class="container">
+    <form asp-action="CreateTradePost" asp-controller="Moderator">
+        <div class="form-group">
+            <label asp-for="ObjectId">Object id</label>
+            <input class="form-control" type="number" asp-for="ObjectId" name="ObjectId"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="Type">Type</label>
+            <select class="form-control" asp-for="Type" asp-items="Html.GetEnumSelectList<TradeType>()">
+                <option selected="selected" value="">Please select</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartDate">Start date</label>
+            <input class="form-control" type="datetime-local" asp-for="StartDate" name="StartDate" />
+        </div>
+        <div class="form-group">
+            <label asp-for="AuctionDate">Auction date</label>
+            <input class="form-control" type="datetime-local" asp-for="AuctionDate" name="AuctionDate" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EndDate">End date</label>
+            <input class="form-control" type="datetime-local" asp-for="EndDate" name="EndDate" />
+        </div>
+        <input type="submit" class="btn btn-outline-primary" value="Submit"/>
+    </form>
+</div>

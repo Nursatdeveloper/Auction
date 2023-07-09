@@ -1,0 +1,19 @@
+﻿@model Auction.MVC.CreateTradeObjectDto
+
+<div class="container">
+    <form asp-action="CreateTradeObjectPost" asp-controller="Moderator">
+        <div class="form-group">
+            <label asp-for="Name">ObjectName</label>
+            <input class="form-control" type="text" asp-for="Name" name="Name" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Price</label>
+            <input class="form-control" type="number" asp-for="Price" name="Price" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input class="form-control" type="text" asp-for="Description" name="Description" />
+        </div>
+        <input type="submit" class="btn btn-outline-primary" value="Submit" />
+    </form>
+</div>

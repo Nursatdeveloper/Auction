@@ -1,0 +1,55 @@
+﻿@model Auction.MVC.TradeViewDto
+
+@{
+
+}
+
+@if(User.Identity.IsAuthenticated) {
+    if(Model.Status == TradeStatus.StartedAcceptingParticipants) {
+        <div class="container">
+            <a class="btn btn-primary btn-sm" asp-action="ParticipateInAuction" asp-controller="Home" asp-route-tradeId="@Model.TradeId" asp-route-iin="@User.Claims.First(x => x.Type == "Iin").Value">Participate</a>
+        </div>
+    } else if(Model.Status == TradeStatus.Pending){
+        <div class="container">
+            <div class="alert alert-warning">You can apply for participation after @Model.StartDate</div>
+            <a class="btn btn-primary btn-sm disabled" asp-action="ParticipateInAuction" asp-controller="Home" asp-route-tradeId="@Model.TradeId" asp-route-iin="@User.Claims.First(x => x.Type == "Iin").Value">Participate</a>
+        </div>
+    }else if(Model.Status == TradeStatus.StartedAuction) {
+        <div class="container">
+            <a class="btn btn-success btn-sm" asp-action="AuctionRoomView" asp-controller="Home" asp-route-tradeId="@Model.TradeId" asp-route-iin="@User.Claims.First(x => x.Type == "Iin").Value">Go to auction room</a>
+        </div>
+    } else {
+        <div class="alert alert-info">Trade was finished</div>
+    }
+}
+
+<div class="container">
+    <div class="form-group">
+        <label asp-for="TradeId">Trade Id</label>
+        <input class="form-control" type="text" asp-for="TradeId" name="ObjectId" value="@Model.TradeId" disabled/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input class="form-control" type="text" asp-for="Name" name="Name" value="@Model.Name" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Price">Price</label>
+        <input class="form-control" type="text" asp-for="Price" name="Price" value="@Model.Price" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="Type">Type</label>
+        <input class="form-control" type="text" asp-for="Type" name="Type" value="@Model.Type" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="AuctionDate">Auction date</label>
+        <input class="form-control" type="text" asp-for="AuctionDate" name="AuctionDate" value="@Model.AuctionDate" disabled/>
+    </div>
+    <div class="form-group">
+        <label asp-for="EndDate">End date</label>
+        <input class="form-control" type="text" asp-for="EndDate" name="EndDate" value="@Model.EndDate" disabled />
+    </div>
+    <div class="form-group">
+        <label asp-for="ParticipantsCount">End date</label>
+        <input class="form-control" type="text" asp-for="ParticipantsCount" name="ParticipantsCount" value="@Model.ParticipantsCount" disabled />
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model Auction.MVC.LoginUserDto
+
+<div class="container">
+    <form asp-action="LoginPost" asp-controller="User">
+
+        <div class="form-group">
+            <label asp-for="Iin">Iin</label>
+            <input class="form-control" type="text" asp-for="Iin" name="Iin" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Password</label>
+            <input class="form-control" type="password" asp-for="Password" name="Password" />
+        </div>
+        <input type="submit" class="btn btn-outline-primary" value="Submit" />
+    </form>
+    <div>
+        <a asp-action="RegisterView" asp-controller="User">Register</a>
+    </div>
+</div>

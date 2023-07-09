@@ -1,0 +1,63 @@
+﻿@model Auction.MVC.ModeratorViewDto
+
+<div class="container">
+    <div class="d-flex">
+        <div class="m-1"><a asp-action="CreateTradeView" class="btn btn-primary btn-sm mr-2">Create trade</a></div>
+        <div class="m-1"><a asp-action="CreateTradeObjectView" class="btn btn-primary btn-sm ml-2">Create trade object</a></div>
+    </div>
+    <div class="mt-2 card card-body">
+        <h5>Trade List</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Object Id</th>
+              <th scope="col">Type</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">Auction Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+                @foreach(var trade in Model.Trades) {
+                    <tr>
+                      <td>@trade.Id</td>
+                      <td>@trade.ObjectId</td>
+                      <td>@trade.Type</td>
+                      <td>@trade.StartDate</td>
+                      <td>@trade.AuctionDate</td>
+                      <td>@trade.EndDate</td>
+                      <td>@trade.Winner</td>
+                    </tr>
+                }
+          </tbody>
+        </table>
+    </div>
+
+    <div class="mt-4 card card-body">
+        <h5>Trade Object List</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var tradeObject in Model.TradeObjects) {
+                    <tr>
+                        <td>@tradeObject.Id</td>
+                        <td>@tradeObject.Name</td>
+                        <td>@tradeObject.Price</td>
+                        <td>@tradeObject.Description</td>
+                        <td>@tradeObject.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
